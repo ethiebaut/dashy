@@ -1,0 +1,11 @@
+# -----------------------------------------------------------------------------------------
+# An image for Kubernetes, where the /app/public folder is an external persistent volume
+# The public folder is initialised the first time the container is created on an empty volume,
+# and untouched after that.
+# -----------------------------------------------------------------------------------------
+
+FROM lissy93/dashy:2.1.1
+RUN mv /app/public /app/public-init && mkdir /app/public
+COPY k8s-start.sh /app/k8s-start.sh
+
+CMD [ "/app/k8s-start.sh" ]

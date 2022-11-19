@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: {{ include "dashy.fullname" . }}
+spec:
+  storageClassName: simple
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 8Mi
